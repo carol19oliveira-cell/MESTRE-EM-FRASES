@@ -1,0 +1,8 @@
+{
+  "name": "Pagina de vendas MESTRE EM FRASES (PATRICK)",
+  "description": "Mestre em Frases com Patrick Leon — Treinamento prático para bateristas aprenderem novas frases em Sextina, Semicolcheia, Fusa e Shuffle com partitura integrada e versão lenta.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

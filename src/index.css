@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-obsidian: #08080a;
+  --color-brand-graphite: #0f1015;
+  --color-brand-surface: #15171e;
+  --color-brand-metal: #1f222d;
+
+  --color-brand-gold: #d4af37;
+  --color-brand-gold-light: #f0d57c;
+  --color-brand-gold-deep: #a67c1e;
+
+  --color-brand-wine: #6b1829;
+  --color-brand-wine-light: #942239;
+}
+
+/* Cinematic lighting & atmospheric utilities */
+.ambient-glow-gold {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, rgba(212, 175, 55, 0) 70%);
+}
+
+.ambient-glow-wine {
+  background: radial-gradient(circle, rgba(107, 24, 41, 0.22) 0%, rgba(107, 24, 41, 0) 70%);
+}
+
+/* Metallic gold text gradient */
+.text-gold-metallic {
+  background: linear-gradient(135deg, #f5e29c 0%, #d4af37 45%, #b58922 85%, #f0d57c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Metallic gold button surface */
+.bg-gold-metallic {
+  background: linear-gradient(135deg, #e5c453 0%, #d4af37 50%, #b88b28 100%);
+}
+
+.bg-gold-metallic:hover {
+  background: linear-gradient(135deg, #f0d266 0%, #dfc048 50%, #c69832 100%);
+}
+
+/* Subtle 5-line musical staff background pattern */
+.bg-staff-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(212, 175, 55, 0.045) 0px,
+    rgba(212, 175, 55, 0.045) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  background-size: 100% 50px;
+}
+
+/* Subtle metallic card border glow */
+.card-metallic {
+  background: linear-gradient(180deg, rgba(24, 26, 34, 0.88) 0%, rgba(14, 15, 20, 0.96) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+.card-metallic:hover {
+  border-color: rgba(212, 175, 55, 0.36);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #222530;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
