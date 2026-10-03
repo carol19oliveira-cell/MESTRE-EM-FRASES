@@ -14,6 +14,9 @@ import {
   LayoutGrid,
   ArrowRight,
   Music,
+  ShieldCheck,
+  Zap,
+  Award,
 } from "lucide-react";
 
 import VideoPlayerMock from "./components/VideoPlayerMock";
@@ -659,6 +662,21 @@ export default function App() {
               </div>
             ))}
           </div>
+
+          {/* CTA Button after Modules */}
+          <div className="pt-12 flex justify-center items-center">
+            <a
+              href="#oferta"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToOffer();
+              }}
+              className="w-full sm:w-auto px-9 py-4.5 rounded-xl bg-gold-metallic text-black font-display font-extrabold text-sm sm:text-base tracking-wider uppercase shadow-[0_12px_35px_-8px_rgba(212,175,55,0.45)] cursor-pointer flex items-center justify-center gap-3 group transition-transform active:scale-[0.99] whitespace-nowrap"
+            >
+              <span>QUERO DOMINAR NOVAS FRASES</span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
         </section>
 
         {/* ================= 4. TUDO O QUE O ALUNO RECEBE ================= */}
@@ -902,8 +920,8 @@ export default function App() {
               ))}
             </div>
 
-            {/* Primary Offer CTA */}
-            <div className="space-y-4 pt-1">
+            {/* Primary Offer CTA & Minimalist Trust Bar */}
+            <div className="space-y-6 pt-1">
               <motion.a
                 href={PRODUCT_CONFIG.commercial.checkoutUrl}
                 target="_blank"
@@ -919,6 +937,36 @@ export default function App() {
                 <span>QUERO ACESSAR O MESTRE EM FRASES</span>
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1 shrink-0" />
               </motion.a>
+
+              {/* Minimalist & Evident Side-by-Side Trust Badges */}
+              <div className="pt-4 border-t border-white/[0.08] grid grid-cols-3 gap-2 sm:gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 text-center sm:text-left px-2 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="w-7 h-7 rounded-lg bg-brand-gold/15 border border-brand-gold/35 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-4 h-4 text-brand-gold" />
+                  </div>
+                  <span className="text-[11px] sm:text-xs font-display font-bold text-zinc-200 tracking-wide leading-tight">
+                    Compra 100% Segura
+                  </span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 text-center sm:text-left px-2 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="w-7 h-7 rounded-lg bg-brand-gold/15 border border-brand-gold/35 flex items-center justify-center shrink-0">
+                    <Zap className="w-4 h-4 text-brand-gold" />
+                  </div>
+                  <span className="text-[11px] sm:text-xs font-display font-bold text-zinc-200 tracking-wide leading-tight">
+                    Acesso Imediato
+                  </span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 text-center sm:text-left px-2 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="w-7 h-7 rounded-lg bg-brand-gold/15 border border-brand-gold/35 flex items-center justify-center shrink-0">
+                    <Award className="w-4 h-4 text-brand-gold" />
+                  </div>
+                  <span className="text-[11px] sm:text-xs font-display font-bold text-zinc-200 tracking-wide leading-tight">
+                    Garantia de Satisfação
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
