@@ -900,7 +900,7 @@ export default function App() {
                   R$ 127,90
                 </p>
                 <div className="text-4xl sm:text-6xl font-display font-black text-gold-metallic tracking-tight leading-none">
-                  R$ 77,90
+                  {PRODUCT_CONFIG.commercial.cashPriceText || "R$ 47,90"}
                 </div>
               </div>
             </div>

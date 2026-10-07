@@ -71,7 +71,7 @@ export const PRODUCT_CONFIG = {
     /** Preço anterior riscado */
     oldPriceText: "R$ 127,90",
     /** Preço principal */
-    cashPriceText: "R$ 77,90",
+    cashPriceText: "R$ 47,90",
   },
 
   // ============================================================================
