@@ -54,7 +54,7 @@ const faqData: FAQItem[] = [
 ];
 
 export default function FaqSection() {
-  const [openId, setOpenId] = useState<string | null>("partitura-aula");
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const toggleAccordion = (id: string) => {
     setOpenId(openId === id ? null : id);
@@ -63,18 +63,18 @@ export default function FaqSection() {
   return (
     <section
       id="faq-section"
-      className="py-20 md:py-28 px-6 max-w-4xl mx-auto relative z-10"
+      className="py-16 md:py-24 px-6 max-w-3xl mx-auto relative z-10"
     >
-      <div className="text-center mb-14 space-y-3">
+      <div className="text-center mb-10 space-y-2.5">
         <p className="text-xs font-mono uppercase tracking-[0.25em] text-brand-gold">
           TIRE SUAS DÚVIDAS
         </p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white uppercase">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold tracking-tight text-white uppercase">
           PERGUNTAS FREQUENTES
         </h2>
       </div>
 
-      <div className="space-y-3.5">
+      <div className="space-y-2.5">
         {faqData.map((item, idx) => {
           const isOpen = openId === item.id;
           return (
@@ -82,35 +82,35 @@ export default function FaqSection() {
               key={item.id}
               className={`rounded-xl bg-white transition-all duration-200 overflow-hidden ${
                 isOpen
-                  ? "border-2 border-brand-gold shadow-[0_12px_35px_-10px_rgba(212,175,55,0.35)]"
-                  : "border border-zinc-200 shadow-md hover:border-brand-gold/60"
+                  ? "border border-brand-gold shadow-[0_8px_25px_-8px_rgba(212,175,55,0.3)]"
+                  : "border border-zinc-200 shadow-sm hover:border-brand-gold/50"
               }`}
             >
               <button
                 type="button"
                 onClick={() => toggleAccordion(item.id)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left font-sans font-bold text-zinc-900 hover:text-black transition-colors cursor-pointer gap-4"
+                className="w-full flex items-center justify-between px-4.5 sm:px-5 py-3.5 sm:py-4 text-left font-sans font-bold text-zinc-900 hover:text-black transition-colors cursor-pointer gap-3 sm:gap-4"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-3.5">
                   <span
-                    className={`font-mono text-xs font-extrabold tabular-nums ${
+                    className={`font-mono text-xs font-extrabold tabular-nums shrink-0 ${
                       isOpen ? "text-amber-600" : "text-zinc-400"
                     }`}
                   >
                     {String(idx + 1).padStart(2, "0")}.
                   </span>
-                  <span className="text-base md:text-lg">{item.question}</span>
+                  <span className="text-sm sm:text-base leading-snug">{item.question}</span>
                 </div>
                 <motion.div
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.18 }}
-                  className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
+                  className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center border transition-colors ${
                     isOpen
                       ? "bg-amber-500/15 border-amber-500/40 text-amber-700"
-                      : "bg-zinc-100 border-zinc-200 text-zinc-600"
+                      : "bg-zinc-100 border-zinc-200 text-zinc-500"
                   }`}
                 >
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3.5 h-3.5" />
                 </motion.div>
               </button>
 
@@ -120,9 +120,9 @@ export default function FaqSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <div className="px-6 pb-6 pt-3 text-sm md:text-base text-zinc-700 leading-relaxed border-t border-zinc-200">
+                    <div className="px-5 pb-4 pt-2 text-xs sm:text-sm text-zinc-700 leading-relaxed border-t border-zinc-100">
                       <p>{item.answer}</p>
                     </div>
                   </motion.div>

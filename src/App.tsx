@@ -19,7 +19,6 @@ import {
   Award,
 } from "lucide-react";
 
-import VideoPlayerMock from "./components/VideoPlayerMock";
 import FaqSection from "./components/FaqSection";
 import CheckoutModal from "./components/CheckoutModal";
 import SalesToast from "./components/SalesToast";
@@ -378,6 +377,12 @@ export default function App() {
   };
 
   const { heroMainImage } = PRODUCT_CONFIG.media;
+  const marqueeModules = [
+    ...PRODUCT_CONFIG.modules,
+    ...PRODUCT_CONFIG.modules,
+    ...PRODUCT_CONFIG.modules,
+    ...PRODUCT_CONFIG.modules,
+  ];
 
   return (
     <div className="min-h-screen bg-brand-obsidian text-zinc-100 font-sans selection:bg-brand-gold selection:text-black relative overflow-x-hidden">
@@ -498,11 +503,21 @@ export default function App() {
           </div>
 
           {/* 3. Subheadline & Primary CTA Below the Image */}
-          <div className="space-y-7 max-w-2xl mx-auto pt-2">
-            <p className="text-base sm:text-lg md:text-xl text-zinc-300 leading-relaxed font-normal px-2">
-              Você vai aprender frases incríveis explorando sextinas,
-              semicolcheias, fusas e shuffle para enriquecer seu vocabulário e
-              elevar sua tocada a outro nível.
+          <div className="space-y-6 max-w-4xl mx-auto pt-2">
+            <p className="text-base sm:text-lg md:text-xl text-zinc-300 leading-snug md:leading-relaxed font-normal px-2">
+              Aprenda frases que dão{" "}
+              <span className="text-white font-semibold">
+                mais personalidade e destaque à sua tocada
+              </span>
+              , para{" "}
+              <span className="text-gold-metallic font-bold">
+                sair do comum
+              </span>{" "}
+              e começar a{" "}
+              <span className="text-white font-semibold">
+                soar como os grandes bateristas que você admira
+              </span>
+              .
             </p>
 
             <div className="flex justify-center items-center">
@@ -521,27 +536,22 @@ export default function App() {
           </div>
         </section>
 
-        {/* ================= 2. COMO FUNCIONA O ESTUDO ================= */}
+        {/* ================= 2. SEÇÃO — MÓDULOS ================= */}
         <section
-          id="como-funciona"
-          className="py-20 md:py-28 border-t border-b border-white/[0.06] bg-gradient-to-b from-brand-obsidian via-brand-graphite/70 to-brand-obsidian relative"
+          id="modulos"
+          className="py-20 md:py-28 w-full space-y-14 relative"
         >
-          <div className="max-w-6xl mx-auto px-6 space-y-12">
-            {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto space-y-4">
+          <div className="max-w-6xl mx-auto px-6 space-y-14">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
               <p className="text-xs font-mono uppercase tracking-[0.25em] text-brand-gold">
-                METODOLOGIA PASSO A PASSO
+                SEU NOVO VOCABULÁRIO COMEÇA AQUI
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white uppercase">
-                VEJA COMO VOCÊ VAI ESTUDAR
+                DENTRO DO MESTRE EM FRASES
               </h2>
-              <p className="text-base sm:text-lg text-zinc-300 leading-relaxed">
-                Cada frase é apresentada de forma prática para que você consiga
-                entender, acompanhar e estudar cada detalhe.
-              </p>
             </div>
 
-            {/* Study Section Image placed right after the text */}
+            {/* Member Area / Lesson Preview Image */}
             <div className="w-full max-w-4xl mx-auto relative group">
               <div className="absolute -inset-2 bg-gradient-to-tr from-brand-wine/20 via-brand-gold/15 to-transparent rounded-3xl blur-2xl opacity-60 pointer-events-none" />
               <div className="relative rounded-2xl overflow-hidden border border-brand-gold/25 bg-brand-obsidian shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)]">
@@ -550,7 +560,7 @@ export default function App() {
                     PRODUCT_CONFIG.media.studyLessonPreviewImage ||
                     "/images/como-estudar.webp"
                   }
-                  alt="Veja como você vai estudar - Mestre em Frases"
+                  alt="Aulas por dentro do Mestre em Frases"
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"
@@ -566,105 +576,82 @@ export default function App() {
                 />
               </div>
             </div>
-
-            {/* 3-Step Breakdown */}
-            <VideoPlayerMock />
-          </div>
-        </section>
-
-        {/* ================= 3. SEÇÃO — MÓDULOS ================= */}
-        <section
-          id="modulos"
-          className="py-20 md:py-28 max-w-6xl mx-auto px-6 space-y-14 relative"
-        >
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <p className="text-xs font-mono uppercase tracking-[0.25em] text-brand-gold">
-              SEU NOVO VOCABULÁRIO COMEÇA AQUI
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white uppercase">
-              DENTRO DO MESTRE EM FRASES
-            </h2>
-            <p className="text-base sm:text-lg text-zinc-300 leading-relaxed pt-1">
-              Um repertório organizado para você explorar diferentes
-              subdivisões, sonoridades e possibilidades na bateria.
-            </p>
           </div>
 
-          {/* 4 Large Module Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-            {PRODUCT_CONFIG.modules.map((mod: ModuleConfig) => (
-              <div
-                key={mod.id}
-                className="group rounded-2xl card-metallic overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-[0_20px_50px_-15px_rgba(0,0,0,0.75)]"
-              >
-                {/* Dedicated Space for Official Module Cover Artwork */}
-                {mod.coverImage ? (
-                  <div className="relative w-full bg-[#0b0c10] border-b border-white/[0.06] overflow-hidden">
-                    <img
-                      src={mod.coverImage}
-                      alt={`${mod.number} - ${mod.title}`}
-                      loading="lazy"
-                      decoding="async"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (
-                          mod.coverFallbackUrl &&
-                          target.src !== mod.coverFallbackUrl
-                        ) {
-                          target.src = mod.coverFallbackUrl;
-                        }
-                      }}
-                      className="w-full h-auto block transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative aspect-[16/10] w-full bg-[#0b0c10] border-b border-white/[0.06] overflow-hidden flex flex-col justify-between p-6">
-                    {/* Subtle background staff & ambient light */}
-                    <div className="absolute inset-0 bg-staff-lines opacity-40 pointer-events-none" />
-                    <div className="absolute -right-12 -top-12 w-48 h-48 ambient-glow-gold opacity-40 pointer-events-none" />
-
-                    <div className="relative z-10 flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-gold">
-                        {mod.number}
-                      </span>
-                      <span className="font-mono text-[11px] text-zinc-500">
-                        {mod.notationLabel}
-                      </span>
+          {/* Modules Compact Carousel Track - Full Width from Edge to Edge */}
+          <div className="w-full overflow-hidden py-4">
+            <div className="animate-marquee-rtl gap-5 flex w-max">
+              {marqueeModules.map((mod: ModuleConfig, idx: number) => (
+                <div
+                  key={`${mod.id}-${idx}`}
+                  className="w-[280px] sm:w-[320px] md:w-[350px] shrink-0 group rounded-2xl card-metallic overflow-hidden transition-all duration-200 flex flex-col justify-between shadow-[0_15px_35px_-10px_rgba(0,0,0,0.65)] hover:border-brand-gold/50"
+                >
+                  {/* Dedicated Space for Official Module Cover Artwork */}
+                  {mod.coverImage ? (
+                    <div className="relative w-full bg-[#0b0c10] border-b border-white/[0.06] overflow-hidden">
+                      <img
+                        src={mod.coverImage}
+                        alt={`${mod.number} - ${mod.title}`}
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (
+                            mod.coverFallbackUrl &&
+                            target.src !== mod.coverFallbackUrl
+                          ) {
+                            target.src = mod.coverFallbackUrl;
+                          }
+                        }}
+                        className="w-full h-auto block object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
+                  ) : (
+                    <div className="relative aspect-[16/10] w-full bg-[#0b0c10] border-b border-white/[0.06] overflow-hidden flex flex-col justify-between p-4">
+                      {/* Subtle background staff & ambient light */}
+                      <div className="absolute inset-0 bg-staff-lines opacity-40 pointer-events-none" />
+                      <div className="absolute -right-12 -top-12 w-48 h-48 ambient-glow-gold opacity-40 pointer-events-none" />
 
-                    {/* Authentic Drum Subdivision Notation Graphic */}
-                    <div className="relative z-10 my-auto py-2">
-                      <ModuleSubdivisionGraphic moduleId={mod.id} />
+                      <div className="relative z-10 flex items-center justify-between">
+                        <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-gold">
+                          {mod.number}
+                        </span>
+                        <span className="font-mono text-[10px] text-zinc-500">
+                          {mod.notationLabel}
+                        </span>
+                      </div>
+
+                      {/* Authentic Drum Subdivision Notation Graphic */}
+                      <div className="relative z-10 my-auto py-1">
+                        <ModuleSubdivisionGraphic moduleId={mod.id} />
+                      </div>
+
+                      <div className="relative z-10 flex items-center justify-between text-[10px] font-mono text-zinc-400 border-t border-white/[0.05] pt-1.5">
+                        <span>{mod.number}</span>
+                        <span className="text-brand-gold/90">
+                          {mod.subdivisionPattern}
+                        </span>
+                      </div>
                     </div>
+                  )}
 
-                    <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-400 border-t border-white/[0.05] pt-2.5">
-                      <span>ARTE DO {mod.number}</span>
-                      <span className="text-brand-gold/90">
-                        {mod.subdivisionPattern}
-                      </span>
+                  {/* Card Title & Number (Without Description) */}
+                  <div className="p-4 sm:p-5 space-y-1.5">
+                    <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-brand-gold font-semibold">
+                      {mod.number}
                     </div>
+                    <h3 className="text-base sm:text-lg font-display font-extrabold text-white uppercase tracking-tight group-hover:text-brand-gold-light transition-colors line-clamp-1">
+                      {mod.title}
+                    </h3>
                   </div>
-                )}
-
-                {/* Card Copy Content */}
-                <div className="p-6 sm:p-8 space-y-3">
-                  <div className="text-xs font-mono uppercase tracking-[0.2em] text-brand-gold font-semibold">
-                    {mod.number}
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-white uppercase tracking-tight group-hover:text-brand-gold-light transition-colors">
-                    {mod.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    {mod.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* CTA Button after Modules */}
-          <div className="pt-12 flex justify-center items-center">
+          <div className="max-w-6xl mx-auto px-6 flex justify-center items-center">
             <a
               href="#oferta"
               onClick={(e) => {
@@ -687,10 +674,13 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-6 space-y-14">
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <p className="text-xs font-mono uppercase tracking-[0.25em] text-brand-gold">
-                ESTUDO COMPLETO E DIRETO AO PONTO
+                VIDEOAULAS + MATERIAL PARA ESTUDO + SUPORTE WHATSAPP
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white uppercase">
-                TUDO O QUE VOCÊ RECEBE
+                O QUE VOCÊ{" "}
+                <span className="text-gold-metallic">
+                  RECEBE
+                </span>
               </h2>
             </div>
 
@@ -968,6 +958,31 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ================= 6. GARANTIA ================= */}
+        <section
+          id="garantia"
+          className="pt-12 pb-4 px-6 max-w-xl mx-auto text-center relative z-10"
+        >
+          <div className="p-6 sm:p-7 rounded-2xl card-metallic border border-brand-gold/30 shadow-[0_15px_40px_-10px_rgba(212,175,55,0.15)] flex flex-col items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-brand-gold/15 border border-brand-gold/40 flex items-center justify-center text-brand-gold shrink-0">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+
+            <div className="space-y-1.5">
+              <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-brand-gold font-bold">
+                RISCO ZERO · 7 DIAS
+              </p>
+              <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white uppercase tracking-tight">
+                GARANTIA INCONDICIONAL
+              </h3>
+            </div>
+
+            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-md">
+              Acesse o treinamento e estude por 7 dias. Se você achar que o conteúdo não é para você, basta solicitar o reembolso e seu investimento será 100% devolvido sem perguntas.
+            </p>
           </div>
         </section>
 
